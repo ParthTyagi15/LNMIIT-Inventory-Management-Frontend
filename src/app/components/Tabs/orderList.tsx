@@ -53,7 +53,7 @@ const OrdersList: React.FC = () => {
     };
     console.log(order);
     axios
-      .post("http://localhost:8080/user/orderItem", order)
+      .post("https://lnmiit-inventory-backend.onrender.com/user/orderItem", order)
       .then((response) =>
         toast.success("Order placed successfully", {
           position: "top-center",

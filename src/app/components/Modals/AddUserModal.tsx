@@ -46,7 +46,7 @@ const AddUserModal : React.FC<AddUserModalProps> = (props) => {
       department: user.department,
       name: user.name,
     };
-    axios.post("http://localhost:8080/auth/register", newUser).then((res) => {
+    axios.post("https://lnmiit-inventory-backend.onrender.com/auth/register", newUser).then((res) => {
       console.log(res);
     });
     props.onAdd(newUser);

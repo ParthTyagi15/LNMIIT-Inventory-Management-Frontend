@@ -5,17 +5,17 @@ import Modal from "@mui/material/Modal";
 // import "./AddItemsModal.css";
 import axios from "axios";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 800,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 4,
-  borderRadius: 2,
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 800,
+//   bgcolor: "background.paper",
+//   boxShadow: 24,
+//   p: 4,
+//   borderRadius: 2,
+// };
 
 export default function AddItemsModal(props: { go: (arg0: any) => void }) {
   const [open, setOpen] = React.useState(false);
@@ -43,7 +43,7 @@ export default function AddItemsModal(props: { go: (arg0: any) => void }) {
         expected_cost: item.expected_cost,
         item_count: item.item_count,
       };*/
-    axios.post("http://localhost:8080/admin/addItem", item).then((res) => {
+    axios.post("https://lnmiit-inventory-backend.onrender.com/admin/addItem", item).then((res) => {
       console.log(res);
       props.go(res.data.item);
     });

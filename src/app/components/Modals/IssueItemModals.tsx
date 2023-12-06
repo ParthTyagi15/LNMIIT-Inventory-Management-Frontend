@@ -24,7 +24,7 @@ export default function IssueItemsModal(props: {
   const onSubmit = (event: { preventDefault: () => void }) => {
     issueitem.item_name = props.item.item_name;
     axios
-      .post("http://localhost:8080/admin/issueItem", issueitem)
+      .post("https://lnmiit-inventory-backend.onrender.com/admin/issueItem", issueitem)
       .then((res) => {
         alert("Issued successfully!");
         console.log(res);

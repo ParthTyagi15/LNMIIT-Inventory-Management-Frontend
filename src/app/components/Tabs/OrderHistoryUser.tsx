@@ -8,7 +8,7 @@ const OrderHistoryUser: React.FC = () => {
 
   useEffect(() => {
     const id = localStorage.getItem("userId");
-    axios.get("http://localhost:8080/user/orderHistory/" + id).then((res) => {
+    axios.get("https://lnmiit-inventory-backend.onrender.com/user/orderHistory/" + id).then((res) => {
       console.log(res.data.orders);
       setOrderHistoryUserList(res.data.orders);
     });
@@ -18,7 +18,7 @@ const OrderHistoryUser: React.FC = () => {
     let x = (document.getElementById("date") as HTMLInputElement)?.value;
 
     axios
-      .get(`http://localhost:8080/admin/searchByOrderDate/${x}`)
+      .get(`https://lnmiit-inventory-backend.onrender.com/admin/searchByOrderDate/${x}`)
       .then((response) => setOrderHistoryUserList(response.data))
       .catch((error) => {
         console.log(error);

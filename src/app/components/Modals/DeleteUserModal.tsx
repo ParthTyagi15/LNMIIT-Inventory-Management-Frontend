@@ -28,7 +28,7 @@ const DeleteUserModal : React.FC<DeleteUserModalProps> = (props) => {
 
   const handleClick = () => {
     axios
-      .delete(`http://localhost:8080/admin/deleteUser/${props.username}`)
+      .delete(`https://lnmiit-inventory-backend.onrender.com/admin/deleteUser/${props.username}`)
       .then((res) => {
         console.log(res);
       });

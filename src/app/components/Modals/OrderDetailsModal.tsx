@@ -42,7 +42,7 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({ order }) => {
   if (open && !retrieved) {
     console.log(order);
     axios
-      .get("http://localhost:8080/admin/searchOrder/" + order._id)
+      .get("https://lnmiit-inventory-backend.onrender.com/admin/searchOrder/" + order._id)
       .then((res) => {
         console.log(res.data.order);
         setOrderData(res.data.order);

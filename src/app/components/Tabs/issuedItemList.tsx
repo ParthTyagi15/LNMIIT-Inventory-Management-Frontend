@@ -7,7 +7,7 @@ const IssuedItemsList: React.FC = () => {
   const [allIssuedItems, setIssuedItems] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/IssuedItems").then((res) => {
+    axios.get("https://lnmiit-inventory-backend.onrender.com/admin/IssuedItems").then((res) => {
       console.log(res.data);
       setIssuedItems(res.data);
     });
@@ -15,7 +15,7 @@ const IssuedItemsList: React.FC = () => {
 
   function toInventory(item: any) {
     axios
-      .patch(`http://localhost:8080/admin/toInventory/${item.item_name}`)
+      .patch(`https://lnmiit-inventory-backend.onrender.com/admin/toInventory/${item.item_name}`)
       .then((res) => {
         toast.success("Item sent to Inventory", {
           position: "top-center",
@@ -32,7 +32,7 @@ const IssuedItemsList: React.FC = () => {
         // console.log(error);
       });
     axios
-      .delete(`http://localhost:8080/admin/deleteIssuedItem/${item._id}`)
+      .delete(`https://lnmiit-inventory-backend.onrender.com/admin/deleteIssuedItem/${item._id}`)
       .then((res) => {
         console.log("issued item deleted");
       })

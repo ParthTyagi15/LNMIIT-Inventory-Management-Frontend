@@ -7,7 +7,7 @@ const OrderHistory: React.FC = () => {
   const [orderHistoryAdminList, setOrderHistoryAdminList] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/orders").then((res) => {
+    axios.get("https://lnmiit-inventory-backend.onrender.com/admin/orders").then((res) => {
       console.log(res.data.orders);
       setOrderHistoryAdminList(res.data.orders);
     });
@@ -22,7 +22,7 @@ const OrderHistory: React.FC = () => {
     let x = (document.getElementById("date") as HTMLInputElement)?.value;
 
     axios
-      .get(`http://localhost:8080/admin/searchByOrderDate/${x}`)
+      .get(`https://lnmiit-inventory-backend.onrender.com/admin/searchByOrderDate/${x}`)
       .then((response) => setOrderHistoryAdminList(response.data))
       .catch((error) => {
         console.log(error);

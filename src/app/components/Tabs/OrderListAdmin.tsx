@@ -7,7 +7,7 @@ const OrderListAdmin = () => {
   const [allOrders, setAllOrders] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/orders").then((res) => {
+    axios.get("https://lnmiit-inventory-backend.onrender.com/admin/orders").then((res) => {
       console.log(res.data.orders);
       setAllOrders(res.data.orders);
     });
@@ -15,7 +15,7 @@ const OrderListAdmin = () => {
 
   function AcceptOrder(order_id: any) {
     axios
-      .patch(`http://localhost:8080/admin/acceptOrder/${order_id}`)
+      .patch(`https://lnmiit-inventory-backend.onrender.com/admin/acceptOrder/${order_id}`)
       .then((res) => {
         console.log(res.data.orders);
         toast.success("Order Accepted!", {
@@ -36,7 +36,7 @@ const OrderListAdmin = () => {
 
   function RejectOrder(order_id: any) {
     axios
-      .delete(`http://localhost:8080/admin/rejectOrder/${order_id}`)
+      .delete(`https://lnmiit-inventory-backend.onrender.com/admin/rejectOrder/${order_id}`)
       .then((res) => {
         console.log(res.data.orders);
         toast.success("Order Rejected!", {

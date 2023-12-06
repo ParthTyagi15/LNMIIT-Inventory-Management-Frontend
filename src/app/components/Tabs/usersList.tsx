@@ -11,7 +11,7 @@ const UsersList: React.FC = () => {
 
   async function getAllUsers() {
     axios
-      .get("http://localhost:8080/admin/users")
+      .get("https://lnmiit-inventory-backend.onrender.com/admin/users")
       .then((res) => {
         setAllUsers(res.data.users);
         console.log(res.data.users);

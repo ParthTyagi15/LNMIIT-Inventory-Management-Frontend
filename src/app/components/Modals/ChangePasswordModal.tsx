@@ -32,7 +32,7 @@ const ChangePasswordModal : React.FC<ChangePasswordModalProps> = (props) => {
 
   function handleSubmit() {
     axios
-      .patch("http://localhost:8080/admin/updateUser", {
+      .patch("https://lnmiit-inventory-backend.onrender.com/admin/updateUser", {
         username: props.username,
         password: newPassword,
         department: props.department,
@@ -57,7 +57,7 @@ const ChangePasswordModal : React.FC<ChangePasswordModalProps> = (props) => {
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
         onClick={handleOpen}
       >
-        change password
+        Change password
       </button>
       <Modal
         open={open}

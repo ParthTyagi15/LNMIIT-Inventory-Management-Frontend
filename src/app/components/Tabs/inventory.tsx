@@ -9,7 +9,7 @@ const InventoryList: React.FC = () => {
   const [inventoryData, setInventoryData] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/inventory").then((res) => {
+    axios.get("https://lnmiit-inventory-backend.onrender.com/admin/inventory").then((res) => {
       setInventoryData(res.data.items);
       console.log(res.data);
     });
@@ -23,7 +23,7 @@ const InventoryList: React.FC = () => {
 
   function goes(item_id: any) {
     axios
-      .patch(`http://localhost:8080/admin/issuedDecreaser/${item_id}`)
+      .patch(`https://lnmiit-inventory-backend.onrender.com/admin/issuedDecreaser/${item_id}`)
       .then((res) => {
         setInventoryData((prevItems) => {
           let newItem = prevItems.map((item) =>
@@ -45,7 +45,7 @@ const InventoryList: React.FC = () => {
   async function handleChange(event: any) {
     try {
       axios
-        .get(`http://localhost:8080/admin/${event.target.value}`)
+        .get(`https://lnmiit-inventory-backend.onrender.com/admin/${event.target.value}`)
         .then((res) => {
           var inventoryItems = res.data.items;
           setInventoryData(inventoryItems);
@@ -60,7 +60,7 @@ const InventoryList: React.FC = () => {
     let x = (document.getElementById("item") as HTMLInputElement)?.value;
 
     axios
-      .get(`http://localhost:8080/admin/searchItem/${x}`)
+      .get(`https://lnmiit-inventory-backend.onrender.com/admin/searchItem/${x}`)
       .then((response) => setInventoryData(response.data))
       .catch((error) => {
         console.log(error);

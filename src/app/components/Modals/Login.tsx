@@ -22,7 +22,7 @@ const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {
   const handleSignIn = async () => {
     try {
       // Perform the login request using the fetch function
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch("https://lnmiit-inventory-backend.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {
 
   const handleSignUp = () => {
     // Handle Sign Up logic with username, password, department, and name
-    console.log("Sign Up: ", { username, password, department, name });
+    // console.log("Sign Up: ", { username, password, department, name });
   };
 
   return (

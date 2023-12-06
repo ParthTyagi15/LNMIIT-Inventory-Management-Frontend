@@ -14,7 +14,6 @@ const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState("inventory");
   let temp = false;
   let temp2 = false;
-  let temp3 = false;
   if (typeof window !== "undefined") {
     temp = localStorage.getItem("isLoggedIn") === "true";
     temp2 = localStorage.getItem("isAdmin") === "true";

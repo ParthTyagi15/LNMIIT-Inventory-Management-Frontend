@@ -12,20 +12,26 @@ import UsersList from "@/app/components/Tabs/usersList";
 
 const AdminDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState("inventory");
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === "true"
-  );
-  const [isAdmin, setIsAdmin] = useState(
-    localStorage.getItem("isAdmin") === "true"
-  );
+  let temp = false;
+  let temp2 = false;
+  let temp3 = false;
+  if (typeof window !== "undefined") {
+    temp = localStorage.getItem("isLoggedIn") === "true";
+    temp2 = localStorage.getItem("isAdmin") === "true";
+  }
+  const [isLoggedIn, setIsLoggedIn] = useState(temp);
+  const [isAdmin, setIsAdmin] = useState(temp2);
   const router = useRouter();
   console.log("Is logged in ? " + isLoggedIn);
   console.log("is admin" + isAdmin);
-  const user = {
-    username: localStorage.getItem("username"),
-    name: localStorage.getItem("name"),
-    department: localStorage.getItem("department"),
-  };
+  let user = { username: "", name: "", department: "" };
+  if (typeof window !== "undefined") {
+    user = {
+      username: localStorage.getItem("username")!,
+      name: localStorage.getItem("name")!,
+      department: localStorage.getItem("department")!,
+    };
+  }
   return isLoggedIn && isAdmin ? (
     <div className="flex h-screen">
       <div>

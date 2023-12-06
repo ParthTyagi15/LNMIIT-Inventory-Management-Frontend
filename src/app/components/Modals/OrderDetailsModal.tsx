@@ -31,7 +31,7 @@ interface OrderDetailsModalProps {
 }
 const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({ order }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [orderData, setOrderData] = useState({});
+  const [orderData, setOrderData] = useState<any>({});
   const [retrieved, setRetrieved] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -83,52 +83,19 @@ const OrderDetailsModal: React.FC<OrderDetailsModalProps> = ({ order }) => {
               Purpose : {orderData.remark}
               <br />
               <ul>
-                {order.issued_items.map(
+                {order.issued_item?.map(
                   (item: {
                     item_name:
-                      | string
-                      | number
-                      | boolean
-                      | React.ReactElement<
-                          any,
-                          string | React.JSXElementConstructor<any>
-                        >
-                      | Iterable<React.ReactNode>
-                      | React.ReactPortal
-                      | React.PromiseLikeOfReactNode
-                      | null
-                      | undefined;
+                      | String
                     item_count:
-                      | string
-                      | number
-                      | boolean
-                      | React.ReactElement<
-                          any,
-                          string | React.JSXElementConstructor<any>
-                        >
-                      | Iterable<React.ReactNode>
-                      | React.ReactPortal
-                      | React.PromiseLikeOfReactNode
-                      | null
-                      | undefined;
+                      | Number
                     description:
-                      | string
-                      | number
-                      | boolean
-                      | React.ReactElement<
-                          any,
-                          string | React.JSXElementConstructor<any>
-                        >
-                      | Iterable<React.ReactNode>
-                      | React.ReactPortal
-                      | React.PromiseLikeOfReactNode
-                      | null
-                      | undefined;
+                      | String
+                      
                   }) => (
                     // eslint-disable-next-line react/jsx-key
                     <li>
-                      ItemName : {item.item_name} &nbsp; ItemCount :
-                      {item.item_count} &nbsp; Description :{item.description}{" "}
+                      ItemName : {item.item_name} &nbsp; ItemCount : {item.item_count.toString()} &nbsp; Description :{item.description}{" "}
                       &nbsp;
                     </li>
                   )

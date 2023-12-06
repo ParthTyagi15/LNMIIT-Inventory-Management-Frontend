@@ -22,22 +22,35 @@ const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {
   const handleSignIn = async () => {
     try {
       // Perform the login request using the fetch function
-      const response = await fetch("https://lnmiit-inventory-backend.onrender.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        "https://lnmiit-inventory-backend.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        }
+      );
 
       // Parse the JSON response
       const data = await response.json();
 
       // Check the status and update state accordingly
-      if (data.status === "admin") {
+      if (data.status === "wrong password" || data.status === "oops user not found!") {
+        setIsAdmin(false);
+        setIsLoggedIn(false);
+        toast.error("Wrong username or password", {
+          position: "top-center",
+          autoClose: 2000,
+          theme: "dark",
+        });
+        router.push("/LoginPage");
+        return;
+      } else if (data.status === "admin") {
         setIsAdmin(true);
         localStorage.setItem("isAdmin", "true");
       } else {
@@ -54,10 +67,12 @@ const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {
 
       // Update state to reflect login status
       setIsLoggedIn(true);
-
-      console.log(data);
-    } catch (error : any) {
-      toast.error("Wrong username or password",{position:"top-center",autoClose:2000,theme:"dark"})
+    } catch (error: any) {
+      toast.error("Wrong username or password", {
+        position: "top-center",
+        autoClose: 2000,
+        theme: "dark",
+      });
     }
     console.log("Sign In: ", { username, password });
   };
@@ -69,10 +84,13 @@ const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {
       if (isAdmin == true) {
         router.push("/pages/admin/Dashboard");
       } else {
-        router.push("pages/user/Dashboard");
+        router.push("/pages/user/Dashboard");
       }
     }
-  }, [isLoggedIn,isAdmin,router]);
+    // else{
+    //   router.push("/pages/error")
+    // }
+  }, [isLoggedIn, isAdmin, router]);
 
   const handleSignUp = () => {
     // Handle Sign Up logic with username, password, department, and name

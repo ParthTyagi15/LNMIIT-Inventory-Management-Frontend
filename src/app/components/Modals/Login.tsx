@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useState } from "react";
 interface LoginProps {
   title: string;
   onClose: () => void;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Login: React.FC<LoginProps> = ({ title, onClose, children }) => {

@@ -47,7 +47,7 @@ const LoginPage: React.FC = () => {
           </button> */}
 
           {signInModal && (
-            <Login title="Sign In" onClose={closeSignInModal}>
+            <Login title="Sign In" onClose={closeSignInModal} >
               {/* Sign In Form */}
             </Login>
           )}

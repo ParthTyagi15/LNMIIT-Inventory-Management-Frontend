@@ -14,6 +14,17 @@ const OrderHistoryUser: React.FC = () => {
     });
   }, []);
 
+  function searchByDate() {
+    let x = (document.getElementById("date") as HTMLInputElement)?.value;
+
+    axios
+      .get(`http://localhost:8080/admin/searchByOrderDate/${x}`)
+      .then((response) => setOrderHistoryUserList(response.data))
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   function date(dateto: string | number | Date) {
     const date_to_be = new Date(dateto);
     return date_to_be.toDateString();
@@ -30,6 +41,15 @@ const OrderHistoryUser: React.FC = () => {
               placeholder="Enter Order Date"
               id="date"
             />
+          </div>
+          <div className="ml-2">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded-md focus:outline-none"
+              onClick={searchByDate}
+            >
+              Search
+            </button>
           </div>
         </div>
         <div className="card">
@@ -48,7 +68,9 @@ const OrderHistoryUser: React.FC = () => {
                 <tbody>
                   {orderHistoryUserList.map((order, i) => (
                     <tr key={order._id}>
-                      <td className="flex justify-center py-2 px-4 border-b">{i + 1}</td>
+                      <td className="flex justify-center py-2 px-4 border-b">
+                        {i + 1}
+                      </td>
                       <td className="justify-center py-2 px-4 border-b">
                         <span className="flex justify-center text-s leading-5 font-semibold rounded-full text-black-800">
                           {date(order.order_date)}

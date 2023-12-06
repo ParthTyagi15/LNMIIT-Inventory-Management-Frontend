@@ -62,7 +62,7 @@ const OrderListAdmin = () => {
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-8">Users List</h1>
+      <h1 className="text-3xl font-bold mb-8">Orders List</h1>
       <table className="min-w-full border border-gray-300">
         <thead>
           <tr className="bg-gray-200">
